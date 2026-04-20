@@ -1,0 +1,299 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
+
+  :root {
+    --g900: #173404; --g800: #27500A; --g600: #3B6D11;
+    --g400: #639922; --g200: #97C459; --g100: #C0DD97; --g50: #EAF3DE;
+    --ink: #111; --muted: #555; --surface: #f7f5f0; --white: #fff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  .wrap { font-family: 'DM Sans', sans-serif; background: var(--surface); color: var(--ink); width: 100%; padding-bottom: 4rem; }
+
+  /* HERO */
+  .hero { background: var(--g900); padding: 3.5rem 5vw 3rem; position: relative; overflow: hidden; display: grid; grid-template-columns: 1fr 420px; gap: 3rem; align-items: center; }
+  .hero-content { position: relative; z-index: 1; }
+  .hero-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--g200); margin-bottom: 1.2rem; }
+  .hero-name { font-family: 'Bebas Neue', sans-serif; font-size: clamp(72px,8vw,120px); line-height: 0.92; color: #fff; }
+  .hero-name span { color: var(--g200); }
+  .hero-tagline { font-size: 14px; font-weight: 300; color: var(--g100); margin-top: 1.2rem; max-width: 500px; line-height: 1.7; }
+  .hero-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.4rem; }
+  .pill { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(255,255,255,0.07); border: 0.5px solid rgba(255,255,255,0.2); color: var(--g100); padding: 5px 12px; border-radius: 100px; }
+  .hero-cta { display: inline-flex; align-items: center; gap: 8px; margin-top: 2rem; background: var(--g200); color: var(--g900); font-size: 13px; font-weight: 500; padding: 10px 20px; border-radius: 100px; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; text-decoration: none; }
+  .hero-cta:hover { background: #fff; }
+  .hero-divider { height: 3px; background: var(--g400); }
+
+  /* HERO PHOTO */
+  .hero-photo-wrap { position: relative; border-radius: 16px; overflow: hidden; height: 420px; }
+  .hero-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; filter: saturate(0.85); }
+  .hero-photo-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(160deg, rgba(59,109,17,0.45) 0%, rgba(23,52,4,0.65) 60%, rgba(23,52,4,0.85) 100%); border-radius: 16px; }
+  .hero-photo-wrap::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 40%, rgba(151,196,89,0.25) 0%, transparent 65%); z-index: 1; border-radius: 16px; }
+  .hero-photo-accent { position: absolute; bottom: 1.2rem; left: 1.2rem; z-index: 2; border: 1px solid rgba(151,196,89,0.4); border-radius: 8px; padding: 6px 14px; background: rgba(23,52,4,0.6); backdrop-filter: blur(8px); }
+  .hero-photo-accent span { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--g200); font-weight: 500; }
+
+  /* SECTIONS */
+  section { padding: 2.5rem 5vw; border-bottom: 0.5px solid rgba(0,0,0,0.08); }
+  .sec-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--g400); font-weight: 500; margin-bottom: 1.4rem; }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 3rem; }
+  .about-text { font-size: 14px; line-height: 1.8; color: #333; font-weight: 300; }
+  .about-text strong { font-weight: 500; color: var(--ink); }
+  .stat-stack { display: flex; flex-direction: column; gap: 10px; }
+  .stat-card { background: var(--g900); color: #fff; border-radius: 10px; padding: 0.9rem 1.1rem; }
+  .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: var(--g200); line-height: 1; }
+  .stat-desc { font-size: 11px; color: var(--g100); margin-top: 3px; font-weight: 300; }
+
+  /* EXPERIENCE */
+  .exp-item { display: grid; grid-template-columns: 130px 1fr; gap: 2rem; padding: 1.2rem 0; border-bottom: 0.5px solid rgba(0,0,0,0.06); }
+  .exp-item:last-child { border-bottom: none; }
+  .exp-period { font-size: 11px; color: var(--muted); }
+  .exp-co { font-size: 11px; font-weight: 500; color: var(--g600); margin-top: 3px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .exp-role { font-size: 14px; font-weight: 500; color: var(--ink); }
+  .exp-detail { font-size: 12px; color: #555; margin-top: 4px; line-height: 1.6; font-weight: 300; }
+  .exp-tag { display: inline-block; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; background: var(--g50); color: var(--g600); padding: 2px 8px; border-radius: 4px; margin-top: 5px; }
+
+  /* EDUCATION */
+  .edu-item { display: grid; grid-template-columns: 130px 1fr; gap: 2rem; padding: 1.2rem 0; border-bottom: 0.5px solid rgba(0,0,0,0.06); }
+  .edu-item:last-child { border-bottom: none; }
+  .edu-period { font-size: 11px; color: var(--muted); }
+  .edu-school { font-size: 11px; font-weight: 500; color: var(--g600); margin-top: 3px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .edu-degree { font-size: 14px; font-weight: 500; color: var(--ink); }
+  .edu-detail { font-size: 12px; color: #555; margin-top: 4px; line-height: 1.6; font-weight: 300; }
+
+  /* PROJECTS */
+  .proj-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  .proj-card { background: var(--g900); border-radius: 12px; overflow: hidden; position: relative; min-height: 200px; display: flex; flex-direction: column; justify-content: flex-end; padding: 1.2rem; }
+  .proj-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(23,52,4,0.95) 40%, rgba(23,52,4,0.3)); }
+  .proj-emoji { position: absolute; top: 1rem; left: 1rem; font-size: 22px; z-index: 1; }
+  .proj-result { position: relative; z-index: 1; font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--g200); line-height: 1; }
+  .proj-name { position: relative; z-index: 1; font-size: 12px; font-weight: 500; color: #fff; margin-top: 2px; }
+  .proj-sub { position: relative; z-index: 1; font-size: 10px; color: var(--g100); margin-top: 2px; font-weight: 300; }
+  .proj-tools { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+  .proj-tool { font-size: 9px; letter-spacing: 0.06em; text-transform: uppercase; background: rgba(255,255,255,0.1); color: var(--g100); padding: 2px 7px; border-radius: 3px; }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  .skill-block { background: var(--white); border: 0.5px solid rgba(0,0,0,0.09); border-radius: 10px; padding: 0.9rem 1rem; }
+  .skill-block-title { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--g400); font-weight: 500; margin-bottom: 8px; }
+  .skill-tag { font-size: 12px; color: #333; font-weight: 300; }
+  .skill-tag::after { content: " · "; color: var(--g200); }
+  .skill-tag:last-child::after { content: ""; }
+
+  /* CONTACT */
+  .contact-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  .contact-headline { font-family: 'Bebas Neue', sans-serif; font-size: 40px; color: var(--g900); line-height: 1; }
+  .contact-links { display: flex; flex-direction: column; gap: 8px; }
+  .contact-link { font-size: 13px; color: var(--g600); text-decoration: none; display: flex; align-items: center; gap: 8px; font-weight: 400; }
+  .c-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--g200); flex-shrink: 0; }
+
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-photo-wrap { height: 320px; }
+    .about-grid, .proj-grid, .skills-grid { grid-template-columns: 1fr; }
+    .exp-item, .edu-item { grid-template-columns: 1fr; gap: 0.4rem; }
+    .hero-name { font-size: 64px; }
+    section, .hero { padding-left: 1.4rem; padding-right: 1.4rem; }
+  }
+  @media (max-width: 480px) {
+    .hero-name { font-size: 48px; }
+    .proj-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-label">Marketing · Strategy · Analytics</div>
+      <div class="hero-name">EL ALAMI<br><span>YASSIR</span></div>
+      <p class="hero-tagline">Marketer at the intersection of brand strategy, creative direction, and data. Currently at Glovo Morocco. Joining NEOMA's MS Marketing &amp; Data Analytics in September 2026.</p>
+      <div class="hero-pills">
+        <span class="pill">Paris, France</span>
+        <span class="pill">Alternance · Sept. 2026</span>
+        <span class="pill">FR · EN · AR</span>
+        <span class="pill">500+ LinkedIn connections</span>
+      </div>
+      <a class="hero-cta" href="#contact" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});return false;">Get in touch ↓</a>
+    </div>
+    <div class="hero-photo-wrap">
+      <img src="file:///Users/yasser/Library/Containers/com.apple.Family/Data/Desktop/Personal/Picture/ME.jpg" alt="Yassir El Alami">
+      <div class="hero-photo-accent"><span>Yassir El Alami</span></div>
+    </div>
+  </div>
+  <div class="hero-divider"></div>
+
+  <!-- ABOUT -->
+  <section>
+    <div class="sec-label">About</div>
+    <div class="about-grid">
+      <div class="about-text">
+        Grande École graduate from <strong>ISCAE Casablanca</strong>, trained in marketing, communications, and strategic consulting. I build brands, tell stories with data, and make things look good — sometimes all at once.<br><br>
+        Pragmatic by nature, creative by choice. Whether it's a Looker dashboard or a visual identity, I care about the details that make the difference.
+      </div>
+      <div class="stat-stack">
+        <div class="stat-card"><div class="stat-num">750K</div><div class="stat-desc">Impressions · AIPEC campaign</div></div>
+        <div class="stat-card"><div class="stat-num">−9%</div><div class="stat-desc">Cancellation rate at Glovo</div></div>
+        <div class="stat-card"><div class="stat-num">+100%</div><div class="stat-desc">Weekly orders, On-Demand</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section>
+    <div class="sec-label">Experience</div>
+
+    <div class="exp-item">
+      <div><div class="exp-period">Feb. 2026 – Present</div><div class="exp-co">Glovo Morocco</div></div>
+      <div><div class="exp-role">LaaS Intern — On-Demand Service</div><div class="exp-detail">Growth dashboards (Looker), video content production for restaurant owners and franchisees (Adobe Premiere Pro). Contributed to +100% weekly order growth and reduced cancellation rate by 9%.</div><span class="exp-tag">Data · Creative · Ops</span></div>
+    </div>
+
+    <div class="exp-item">
+      <div><div class="exp-period">Aug. – Oct. 2025</div><div class="exp-co">BIC N&amp;W Africa</div></div>
+      <div><div class="exp-role">Assistant Brand Manager</div><div class="exp-detail">Creative briefs &amp; agency coordination for social, retail, and print. Nielsen report analysis, IPSOS consumer research, e-commerce product management (Glovo, Marjane), 2026 strategic planning contribution.</div><span class="exp-tag">Brand · Trade · Insights</span></div>
+    </div>
+
+    <div class="exp-item">
+      <div><div class="exp-period">Apr. – Aug. 2025</div><div class="exp-co">Bank of Africa</div></div>
+      <div><div class="exp-role">Assistant Responsable Marché Jeunes</div><div class="exp-detail">Strategic case study on Revolut's hybrid banking model. Focus groups, quantitative research, co-development of a new banking offer targeting youth and teens in Morocco.</div><span class="exp-tag">Strategy · Research</span></div>
+    </div>
+
+    <div class="exp-item">
+      <div><div class="exp-period">Feb. – Apr. 2025</div><div class="exp-co">Bank of Africa</div></div>
+      <div><div class="exp-role">Junior Market Analyst Consultant</div><div class="exp-detail">Market intelligence and benchmarking for the youth banking segment. Used Figma and SPSS for data visualization and quantitative analysis.</div><span class="exp-tag">Analytics · Consulting</span></div>
+    </div>
+
+    <div class="exp-item">
+      <div><div class="exp-period">May – Aug. 2024</div><div class="exp-co">Rembrand</div></div>
+      <div><div class="exp-role">Social Media Manager</div><div class="exp-detail">Editorial strategy for B2B and B2C clients. Multi-platform content calendars (LinkedIn, Instagram, Facebook). KPI reporting, A/B testing, organic reach optimization, and creative team coordination.</div><span class="exp-tag">Content · Social · Strategy</span></div>
+    </div>
+
+    <div class="exp-item">
+      <div><div class="exp-period">Jul. 2024</div><div class="exp-co">Seven PM</div></div>
+      <div><div class="exp-role">Artist Assistant</div><div class="exp-detail">Logistics and travel coordination for performing artists during live events in Casablanca.</div><span class="exp-tag">Events · Live</span></div>
+    </div>
+
+    <div class="exp-item">
+      <div><div class="exp-period">Jun. – Oct. 2022</div><div class="exp-co">Hilton Tangier</div></div>
+      <div><div class="exp-role">Global Marketing Intern</div><div class="exp-detail">Competitive benchmarking of the regional hotel market. Event organization for employer branding. Support on digital communication strategy via LinkedIn.</div><span class="exp-tag">Marketing · Hospitality</span></div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section>
+    <div class="sec-label">Creative Projects</div>
+    <div class="proj-grid">
+
+      <div class="proj-card">
+        <div class="proj-emoji">🏦</div>
+        <div class="proj-result">Kyne by BOA</div>
+        <div class="proj-name">Super-App Concept</div>
+        <div class="proj-sub">Bank of Africa · 4 months</div>
+        <div class="proj-tools">
+          <span class="proj-tool">Figma</span>
+          <span class="proj-tool">Illustrator</span>
+          <span class="proj-tool">Spline</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-emoji">👕</div>
+        <div class="proj-result">Sold Out</div>
+        <div class="proj-name">B&amp;W Gabon Jerseys</div>
+        <div class="proj-sub">Billionaire &amp; Wild · 1M FCFA</div>
+        <div class="proj-tools">
+          <span class="proj-tool">Illustrator</span>
+          <span class="proj-tool">Photoshop</span>
+          <span class="proj-tool">InDesign</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-emoji">📢</div>
+        <div class="proj-result">700K Views</div>
+        <div class="proj-name">AIPEC Olympics 2025</div>
+        <div class="proj-sub">250K accounts reached</div>
+        <div class="proj-tools">
+          <span class="proj-tool">After Effects</span>
+          <span class="proj-tool">Premiere</span>
+          <span class="proj-tool">Figma</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section>
+    <div class="sec-label">Education</div>
+
+    <div class="edu-item">
+      <div><div class="edu-period">2026 – 2027</div><div class="edu-school">NEOMA</div></div>
+      <div><div class="edu-degree">Mastère Spécialisé — Marketing &amp; Data Analytics</div><div class="edu-detail">Work-study program (3 weeks company / 1 week school). Data-driven marketing, consumer insights, and value creation through analytics. Paris, France.</div></div>
+    </div>
+
+    <div class="edu-item">
+      <div><div class="edu-period">2023 – 2026</div><div class="edu-school">ISCAE Casablanca</div></div>
+      <div><div class="edu-degree">Grande École Master — Marketing &amp; Communication</div><div class="edu-detail">Led ISCAE's most successful communications campaign (750K impressions). Designed a super-app proposal for Bank of Africa. Acceptance rate: 8%.</div></div>
+    </div>
+
+    <div class="edu-item">
+      <div><div class="edu-period">2021 – 2023</div><div class="edu-school">CPGE Moulay Alhassan</div></div>
+      <div><div class="edu-degree">ECS — Economics &amp; Business Sciences</div><div class="edu-detail">Ranked 39th out of 1,200 candidates at the national CNAEM commerce competition. Admitted to ISCAE Casablanca.</div></div>
+    </div>
+
+    <div class="edu-item">
+      <div><div class="edu-period">2021</div><div class="edu-school">Lycée Ibn Batouta</div></div>
+      <div><div class="edu-degree">Baccalauréat — Sciences Mathématiques B</div><div class="edu-detail">Tangier, Morocco.</div></div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section>
+    <div class="sec-label">Skills</div>
+    <div class="skills-grid">
+      <div class="skill-block">
+        <div class="skill-block-title">Data &amp; Analytics</div>
+        <span class="skill-tag">Looker</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">Power BI</span>
+        <span class="skill-tag">SPSS</span>
+        <span class="skill-tag">Excel</span>
+        <span class="skill-tag">AWS</span>
+      </div>
+      <div class="skill-block">
+        <div class="skill-block-title">Creative</div>
+        <span class="skill-tag">Photoshop</span>
+        <span class="skill-tag">Illustrator</span>
+        <span class="skill-tag">After Effects</span>
+        <span class="skill-tag">Premiere</span>
+        <span class="skill-tag">Figma</span>
+        <span class="skill-tag">InDesign</span>
+      </div>
+      <div class="skill-block">
+        <div class="skill-block-title">Marketing</div>
+        <span class="skill-tag">Meta Ads</span>
+        <span class="skill-tag">Google Ads</span>
+        <span class="skill-tag">CRM</span>
+        <span class="skill-tag">Brief Writing</span>
+        <span class="skill-tag">Nielsen</span>
+        <span class="skill-tag">IPSOS</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="sec-label">Contact</div>
+    <div class="contact-row">
+      <div class="contact-headline">Let's talk.</div>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:elalamiyassiradm@gmail.com"><span class="c-dot"></span>elalamiyassiradm@gmail.com</a>
+        <a class="contact-link" href="https://www.linkedin.com/in/elalamiyassir"><span class="c-dot"></span>linkedin.com/in/elalamiyassir</a>
+        <a class="contact-link" href="tel:+212700469885"><span class="c-dot"></span>+212 700 469 885</a>
+      </div>
+    </div>
+  </section>
+
+</div>
